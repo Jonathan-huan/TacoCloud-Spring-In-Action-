@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:h2:file:~/taco_cloud;AUTO_SERVER=TRUE
+    username: sa
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:sql/schema.sql
+      data-locations: classpath:sql/data.sql

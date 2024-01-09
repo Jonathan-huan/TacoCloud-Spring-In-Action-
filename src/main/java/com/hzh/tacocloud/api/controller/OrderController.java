@@ -1,6 +1,6 @@
 package com.hzh.tacocloud.api.controller;
 
-import com.hzh.tacocloud.domain.TacoOrder;
+import com.hzh.tacocloud.domain.entity.TacoOrder;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
