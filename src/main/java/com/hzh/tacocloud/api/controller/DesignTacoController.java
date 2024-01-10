@@ -57,7 +57,7 @@ public class DesignTacoController {
             List<Ingredient> ingredients, Type type) {
         return ingredients
                 .stream()
-                .filter(x -> x.type().equals(type))
+                .filter(x -> x.getType().equals(type))
                 .collect(Collectors.toList());
     }
 }

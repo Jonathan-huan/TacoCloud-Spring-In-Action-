@@ -1,9 +1,9 @@
 spring:
   datasource:
-    url: jdbc:h2:file:~/taco_cloud;AUTO_SERVER=TRUE
-    username: sa
+    url: jdbc:h2:file:~/taco_cloud;AUTO_SERVER=TRUE; #以自动混合模式启动
+    username: sa #默认数据库用户名
   sql:
     init:
-      mode: always
-      schema-locations: classpath:sql/schema.sql
-      data-locations: classpath:sql/data.sql
+      mode: always #自动运行数据库初始化脚本
+      schema-locations: classpath:sql/schema.sql #表结构文件位置
+      data-locations: classpath:sql/data.sql #表数据文件位置
