@@ -1,30 +1,32 @@
 package com.hzh.tacocloud.domain.entity;
 
-import jakarta.persistence.*;
+import com.datastax.oss.driver.api.core.uuid.Uuids;
+import com.hzh.tacocloud.domain.udt.IngredientUDT;
+import com.hzh.tacocloud.infra.util.TacoUDTUtils;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
+import org.springframework.data.cassandra.core.cql.Ordering;
+import org.springframework.data.cassandra.core.cql.PrimaryKeyType;
+import org.springframework.data.cassandra.core.mapping.Column;
+import org.springframework.data.cassandra.core.mapping.PrimaryKeyColumn;
+import org.springframework.data.cassandra.core.mapping.Table;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @Data
-@Entity
 public class Taco {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
-    private Date createdAt=new Date();
 
     @NotNull
     @Size(min=5, message="Name must be at least 5 characters long")
     private String name;
 
-    @NotNull
+    private Date createdAt=new Date();
+
     @Size(min=1, message = "You must choose at least 1 ingredient")
-    @ManyToMany
     private List<Ingredient> ingredients=new ArrayList<>();
 
     public void addIngredient(Ingredient ingredient){
