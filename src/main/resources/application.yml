@@ -7,10 +7,10 @@ spring:
 #      mode: always #自动运行数据库初始化脚本
 #      schema-locations: classpath:sql/schema.sql #表结构文件位置
 #      data-locations: classpath:sql/data.sql #表数据文件位置
-  cassandra:
-    keyspace-name: tacocloud
-    schema-action: recreate
-    local-datacenter: datacenter1
+#  cassandra:
+#    keyspace-name: tacocloud
+#    schema-action: recreate
+#    local-datacenter: datacenter1
   data:
     mongodb:
       host: localhost
