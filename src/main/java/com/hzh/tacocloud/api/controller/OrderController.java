@@ -4,6 +4,7 @@ import com.hzh.tacocloud.domain.entity.TacoOrder;
 import com.hzh.tacocloud.domain.entity.User;
 import com.hzh.tacocloud.domain.repository.OrderRepository;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -17,13 +18,10 @@ import org.springframework.web.bind.support.SessionStatus;
 @Slf4j
 @Controller
 @RequestMapping("/orders")
+@RequiredArgsConstructor
 public class OrderController {
 
     private final OrderRepository orderRepository;
-
-    public OrderController(OrderRepository orderRepository) {
-        this.orderRepository = orderRepository;
-    }
 
     @GetMapping("/current")
     public String orderForm(Model model){

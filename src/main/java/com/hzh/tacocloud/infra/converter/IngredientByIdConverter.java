@@ -1,14 +1,10 @@
 package com.hzh.tacocloud.infra.converter;
 
 import com.hzh.tacocloud.domain.entity.Ingredient;
-import com.hzh.tacocloud.domain.entity.Ingredient.Type;
 import com.hzh.tacocloud.domain.repository.IngredientRepository;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
-
-import java.util.HashMap;
-import java.util.Map;
 
 @Component
 public class IngredientByIdConverter implements Converter<String,Ingredient> {

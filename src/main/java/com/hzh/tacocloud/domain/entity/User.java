@@ -1,11 +1,9 @@
 package com.hzh.tacocloud.domain.entity;
 
+import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,7 +12,8 @@ import java.io.Serial;
 import java.util.Collection;
 import java.util.Collections;
 
-@Document(collection = "users")
+@Entity
+@Table(name="users")
 @Data
 @NoArgsConstructor(access = AccessLevel.PUBLIC, force = true)
 public class User implements UserDetails {
@@ -22,6 +21,7 @@ public class User implements UserDetails {
     private static final long serialVersionUID=1L;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
     private String username;

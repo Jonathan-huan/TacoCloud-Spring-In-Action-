@@ -1,10 +1,12 @@
 spring:
   profiles:
-    active: dev
+    active: test
 
 ---
 spring:
-  profiles: dev
+  config:
+    activate:
+      on-profile: dev
   datasource:
     url: jdbc:h2:file:./src/main/resources/sql/taco_cloud;AUTO_SERVER=TRUE; #以自动混合模式启动
     username: sa #默认数据库用户名
@@ -24,7 +26,9 @@ logging:
     web: debug
 ---
 spring:
-  profiles: prod
+  config:
+    activate:
+      on-profile: prod
   datasource:
     url: jdbc:h2:file:./src/main/resources/sql/taco_cloud;AUTO_SERVER=TRUE; #以自动混合模式启动
     username: sa #默认数据库用户名
@@ -50,3 +54,13 @@ taco:
 logging:
   level:
     root: warn
+
+---
+spring:
+  config:
+    activate:
+      on-profile: test
+
+  datasource:
+    url: jdbc:h2:mem:tacocloud
+    username: sa

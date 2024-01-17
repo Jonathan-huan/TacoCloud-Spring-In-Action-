@@ -1,10 +1,6 @@
 package com.hzh.tacocloud;
 
-import com.hzh.tacocloud.domain.entity.Ingredient;
-import com.hzh.tacocloud.domain.entity.Ingredient.Type;
 import com.hzh.tacocloud.domain.entity.User;
-import com.hzh.tacocloud.domain.repository.IngredientRepository;
-import com.hzh.tacocloud.domain.repository.OrderRepository;
 import com.hzh.tacocloud.domain.repository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -21,7 +17,7 @@ public class TacoCloudApplication {
 	}
 
 	@Bean
-	@Profile("dev")
+	@Profile({"dev","test"})
 	public CommandLineRunner loadData(UserRepository userRepository, PasswordEncoder encoder){
 		return args -> {
 //			repo.save(new Ingredient("FLTO", "Flour Tortilla", Type.WRAP));
