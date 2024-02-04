@@ -1,32 +1,21 @@
 package com.hzh.tacocloud;
 
-import com.hzh.tacocloud.domain.repository.IngredientRepository;
-import lombok.AccessLevel;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
+import com.google.common.collect.Maps;
+import org.apache.commons.collections4.CollectionUtils;
+import org.json.JSONException;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.Example;
 
-import java.util.Optional;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 
 
-@SpringBootTest
+//@SpringBootTest
 class TacoCloudApplicationTests {
-	@Autowired
-	private IngredientRepository ingredientRepository;
 	@Test
-	void contextLoads() {
+	void collectionTest() throws JSONException {
+		HashMap<Object, Object> map = Maps.newHashMap();
+		HashMap<Object, Object> map1 = new HashMap<>();
 	}
-
-	@Data
-	@NoArgsConstructor(access = AccessLevel.PUBLIC, force = true)
-	@RequiredArgsConstructor
-	class User{
-		private String name;
-		private final String job;
-	}
-
 }

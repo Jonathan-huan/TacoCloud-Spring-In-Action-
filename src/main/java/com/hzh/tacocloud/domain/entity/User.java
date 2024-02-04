@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,16 +14,15 @@ import java.io.Serial;
 import java.util.Collection;
 import java.util.Collections;
 
-@Entity
-@Table(name="users")
+
 @Data
+@Document(collection = "users")
 @NoArgsConstructor(access = AccessLevel.PUBLIC, force = true)
 public class User implements UserDetails {
     @Serial
     private static final long serialVersionUID=1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
     private String username;

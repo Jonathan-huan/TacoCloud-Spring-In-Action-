@@ -1,5 +1,6 @@
 package com.hzh.tacocloud.api.controller;
 
+import com.google.common.collect.Lists;
 import com.hzh.tacocloud.domain.entity.Ingredient;
 import com.hzh.tacocloud.domain.entity.Ingredient.Type;
 import com.hzh.tacocloud.domain.entity.Taco;
@@ -29,7 +30,7 @@ public class DesignTacoController {
     }
     @ModelAttribute
     public void addIngredientsToModel(Model model) {
-        List<Ingredient> ingredients = new ArrayList<>(ingredientRepository.findAll());
+        List<Ingredient> ingredients = Lists.newArrayList(ingredientRepository.findAll());
         Type[] types = Ingredient.Type.values();
         for (Type type : types) {
             model.addAttribute(type.toString().toLowerCase(), filterByType(ingredients, type));

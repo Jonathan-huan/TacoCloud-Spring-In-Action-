@@ -33,12 +33,13 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        return http.authorizeHttpRequests(registry ->
-                registry.requestMatchers("/design","/orders").hasRole("USER")
-                .requestMatchers("/","/**").permitAll())
-                .csrf(configurer -> configurer.ignoringRequestMatchers("/h2-console/**"))
-                .headers(configurer -> configurer.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable))
-                .formLogin(configurer -> configurer.loginPage("/login"))
-                .build();
+        return http.authorizeHttpRequests(
+                registry -> registry
+                        .requestMatchers("/design","/orders").hasRole("USER")
+                        .requestMatchers("/","/**").permitAll())
+                        .csrf(configurer -> configurer.ignoringRequestMatchers("/h2-console/**"))
+                        .headers(configurer -> configurer.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable))
+                        .formLogin(configurer -> configurer.loginPage("/login")
+                ).build();
     }
 }

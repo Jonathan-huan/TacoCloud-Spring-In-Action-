@@ -1,31 +1,28 @@
 spring:
   profiles:
-    active: test
+    active: dev
 
 ---
 spring:
   config:
     activate:
       on-profile: dev
-  datasource:
-    url: jdbc:h2:file:./src/main/resources/sql/taco_cloud;AUTO_SERVER=TRUE; #以自动混合模式启动
-    username: sa #默认数据库用户名
   data:
     mongodb:
-      host: localhost
-      port: 27017
-      database: tacocloud
-
-taco:
-  orders:
-    page-size: 1
-logging:
-  level:
-    root: debug
-    sql: debug
-    web: debug
+      host: ${MONGODB_HOST:localhost}
+      port: ${MONGODB_PORT:27017}
+      database: ${MONGODB_DATABASE:tacocloud}
+    rest:
+      base-path: /api
 ---
 spring:
+  data:
+    mongodb:
+      host: localhost #主机地址
+      port: 27017 #服务器端口
+      username: ${mongodb.username:tacocloud} #连接用户名
+      password: ${MONGO_PASSWORD:tacocloud} #连接密码
+      database: ${MONGO_DATABASE} #数据库名
   config:
     activate:
       on-profile: prod
@@ -41,13 +38,7 @@ spring:
     keyspace-name: tacocloud
     schema-action: recreate
     local-datacenter: datacenter1
-  data:
-    mongodb:
-      host: localhost
-      port: 27017
-      username: tacocloud
-      password: tacocloud
-      database: tacocloud
+
 taco:
   orders:
     page-size: 1
@@ -64,3 +55,19 @@ spring:
   datasource:
     url: jdbc:h2:mem:tacocloud
     username: sa
+server:
+  port: 8443
+  ssl:
+    key-store: C:\Users\13223\mykeys.jks
+    key-store-password: letmein
+    key-password: letmein
+logging:
+  file:
+    path: C:\Users\13223 #日志文件目录
+    name: TacoCloud.log #日志文件名称
+  level:
+    root: warn #全局
+    org.springframework.security: debug #指定包名
+taco:
+  orders:
+    page-size: 6

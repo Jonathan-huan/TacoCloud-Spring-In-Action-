@@ -1,5 +1,6 @@
 package com.hzh.tacocloud.infra.prop;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import lombok.Data;
@@ -9,8 +10,8 @@ import org.springframework.validation.annotation.Validated;
 
 @Data
 @Component
-@ConfigurationProperties(prefix = "taco.orders")
 @Validated
+@ConfigurationProperties(prefix = "taco.orders")
 public class OrderProps {
     @Min(value = 5,message = "must be between 5 and 25")
     @Max(value=25,message = "must be between 5 and 25")
