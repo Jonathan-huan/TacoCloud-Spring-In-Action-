@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: taco-cloud-deploy
+  labels:
+    app: taco-cloud
+
+spec:
+  selector:
+    matchLabels:
+      app: taco-cloud
+  template:
+    metadata:
+      labels:
+        app: taco-cloud
+    spec:
+      containers:
+        - name: taco-cloud
+          image: 1322329153/taco-cloud
+          ports:
+            - containerPort: 8080
+              hostPort: 8080
+          env:
+            - name: MONGODB_HOST
+              value: 139.224.229.36
+          imagePullPolicy: IfNotPresent
